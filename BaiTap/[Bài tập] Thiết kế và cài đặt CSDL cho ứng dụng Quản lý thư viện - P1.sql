@@ -23,10 +23,9 @@ primary key(book_id)
 );
 
 create table library.BorrowOrder(
-order_id int auto_increment,
 book_id int,foreign key(book_id) references Book(book_id),
 student_number varchar(15),foreign key(student_number) references Student(student_number),
-primary key(order_id)
+primary key(book_id,student_number)
 );
 
 INSERT INTO category (category_name) VALUES ('Children Book');
