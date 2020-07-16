@@ -43,3 +43,27 @@ create procedure findAllProducts()
 begin
 select * from products;
 end //
+DELIMITER ;
+
+DELIMITER //
+create procedure createNewProduct(in product_code varchar(15),product_name varchar(30),product_price double,product_amount int,product_description varchar(50),product_status varchar(50))
+begin
+insert into products (productCode,productName,productPrice,productAmount,productDescription,productStatus) value  (product_code,product_name,product_price,product_amount,product_description,product_status);
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure updateProduct(in product_id int,product_code varchar(15),product_name varchar(30),product_price double,product_amount int,product_description varchar(50),product_status varchar(50))
+begin
+update products
+set productCode = product_code,productName = product_name,productPrice = product_price,productAmount = product_amount,productDescription = product_description,productStatus = product_status
+where id = product_id;
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure deleteProduct(in product_id int)
+begin
+delete from products where id = product_id;
+end //
+DELIMITER ;
