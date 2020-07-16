@@ -53,3 +53,21 @@ INSERT INTO borroworder (book_id,student_number) VALUES ('5','SV03');
 INSERT INTO borroworder (book_id,student_number) VALUES ('2','SV05');
 INSERT INTO borroworder (book_id,student_number) VALUES ('6','SV02');
 
+create table address(
+id_student varchar(15),
+street varchar(30),
+city varchar(30),
+country varchar(30),
+foreign key(id_student) references student(student_number)
+);
+
+alter table student drop address;
+
+alter table borroworder add borrow_date date after student_number;
+
+alter table borroworder add expire_date date after borrow_date;
+
+alter table borroworder add over_day int after expire_date;
+
+alter table book add in_rent varchar(1) after category_id;
+
