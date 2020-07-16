@@ -1,0 +1,5 @@
+id,select_type,table,partitions,type,possible_keys,key,key_len,ref,rows,filtered,Extra,status
+1,SIMPLE,products,NULL,const,"PRIMARY,index_productsID",PRIMARY,4,const,1,100,NULL,index
+1,SIMPLE,products,,const,PRIMARY,PRIMARY,4,const,1,100,,no index
+1,SIMPLE,products,,ALL,idx_name_price,,,,10,19,Using where,index
+1,SIMPLE,products,,ALL,,,,,10,19,Using where,no index
