@@ -1,0 +1,57 @@
+/*cố định loại font chữ cho tài liệu và đặt các thuộc tính căn lề cho khung và
+cho nội dung của các danh sách, phần tử trong danh sách (ul, li)*/
+body{
+    font-family: Arial;
+}
+#menu, #menu ul, #menu li{
+    padding:0;
+    margin:0;
+}
+
+#menu li{
+/*list-style: none; Bỏ đi các ký hiệu đánh dấu đầu mỗi phần tử của danh sách (bullet)*/
+    list-style: none;
+/*position: relative; Cho phép các danh sách con được đặt cạnh phần tử chứa nó(phần tử của danh sách ngoài)*/
+    position: relative;
+/*width:100px; và height: 30px; Cố định chiều rộng và chiều cao của một phần tử trong danh sách.*/
+    width:100px;
+    height: 30px;
+/*padding:0 20px; Cố định lề trái (left) và phải (right) dành cho các nội dung bên trong phần tử danh sách (li) với khung viền của nó.*/
+    padding:0 20px;
+/*background-color: black;  Đổi màu nền sang mà đen cho tất cả các phần tử trong danh sách.*/
+    background-color: black;
+/*line-height: 30px; Cố định chiều cao cho mỗi dòng văn bản trong phần tử của danh sách.*/
+    line-height: 30px;
+/*cursor: pointer; chuyển biểu tượng của con trỏ màn hình sang hình bàn tay*/
+    cursor:pointer;
+}
+
+#menu li a{
+/*text-decoration: none; dùng để bỏ các gạch chân của liên kết*/
+    text-decoration:none;
+/*color: white; dùng để đổi màu liên kết sang màu trắng*/
+    color: white;
+}
+/*Để mỗi khi chúng ta đưa chuột qua các phần tử của danh sách (giờ là mục chọn trong trình đơn)
+màu nền của chúng bị thay đổi*/
+#menu li:hover{
+/*đổi thành màu đỏ*/
+    background-color:red;
+}
+
+#menu ul ul{
+/*mô tả position: absolute; cho phép cố định vị trí xuất hiện của các danh sách con*/
+    position: absolute;
+/*mô tả top: 0; và left: 160px; xác định vị trí góc trên trái của khung chứa danh sách con
+(so với vị trí của phần tử chứa danh sách này)*/
+    top:0;
+    left:140px;
+/*mô tả visibility: hidden; sẽ ẩn làm các danh sách con*/
+    visibility:hidden;
+}
+
+/*Bộ chọn này sẽ cho phép danh sách con tương ứng của phần tử đó được hiển thị lên
+khi bị đưa con trỏ qua*/
+#menu ul li:hover ul{
+    visibility:visible;
+}
