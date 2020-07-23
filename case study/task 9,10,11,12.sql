@@ -31,3 +31,11 @@ where l.TenLoaiKhach='Diamond'
 and DiaChi in ("Vinh","DaNang")
 group by HoTen;
 -- task 12
+SELECT h.IDHopDong,n.HoTen,k.HoTen,k.SDT,d.TenDichVu,count(hdct.IdDichVuDiKem) as So_lan_su_dung from hopdong h
+inner join nhanvien n on h.IDNhanVien = n.IDNhanVien
+inner join khachhang k on h.IDKhachHang = k.IDKhachHang
+inner join dichvu d on d.IDDichVu = h.IDDichVu
+inner join hopdongchitiet hdct on h.IDHopDong = hdct.IDHopDong
+where not exists(select h.IDHopDong where h.NgayLamHopDong between "2019-01-01" and "2019-06-31")
+and exists(select h.IDHopDong where h.NgayLamHopDong between "2019-09-01" and "2019-12-31")
+group by d.TenDichVu;

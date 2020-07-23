@@ -1,0 +1,18 @@
+html,body,h1,h2,h3,h4,h5,h6 {font-family: sans-serif;}
+.w3-sidebar {
+    z-index: 3;
+    width: 250px;
+    top: 43px;
+    bottom: 0;
+    height: inherit;
+}
+.w3-main{
+    margin-left:250px
+}
+.w3-story{
+    margin-bottom:250px
+}
+img {
+    max-width: 50%;
+    height: auto;
+}
