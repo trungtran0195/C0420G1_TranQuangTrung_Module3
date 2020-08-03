@@ -1,0 +1,49 @@
+
+
+div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+
+
+div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6:hover{
+    padding: 15px;
+    border: 1px solid #ccc;
+    border: 1px solid #777;
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+    div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+        width: 24.99999%;
+        padding: 5px;}
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+        width: 24.99999%;
+        padding: 5px;}
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+        width: 24.99999%;
+        padding: 5px;}
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+        width: 100%;
+        padding: 5px;}
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+        width: 100%;
+        padding: 5px;}
+}

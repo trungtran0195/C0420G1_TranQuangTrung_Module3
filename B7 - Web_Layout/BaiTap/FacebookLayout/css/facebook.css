@@ -1,0 +1,41 @@
+body {
+    position: relative;
+}
+header {
+    position: fixed;
+    top: 10px;
+}
+
+header input {
+    position: absolute;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 8px;
+    border: solid grey 0.1px;
+}
+header .div1 {
+    margin-top: -40px;
+    margin-left: 300px;
+}
+
+header .div2 {
+    margin-top: -25px;
+    margin-left: 800px;
+}
+
+header .div1 i {
+    margin-left: 70px;
+}
+
+header .div2 i {
+    margin-left: 20px;
+}
+
+section {
+    border: #333333 solid;
+    height: 1500px;
+    width: 60%;
+    margin-top: 100px;
+    margin-left: 20%;
+}

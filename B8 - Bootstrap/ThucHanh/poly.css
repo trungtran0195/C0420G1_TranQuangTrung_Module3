@@ -1,0 +1,24 @@
+header {
+    position: relative;
+}
+.shopping-mall {
+    margin-top: auto;
+    font-variant: small-caps;
+}
+.shopping-mall>h1 {
+    font-family: Impact;
+    font-size: 50px;
+    color: white;
+    letter-spacing: 0.3px;
+    text-shadow: 0 0 2px black;
+    padding-bottom: 0px;
+    border-bottom: 1px dotted gray;
+    margin: 0px;
+    width: 49%;
+}
+.shopping-mall>h5 {
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+    font-size: small;
+}
+
