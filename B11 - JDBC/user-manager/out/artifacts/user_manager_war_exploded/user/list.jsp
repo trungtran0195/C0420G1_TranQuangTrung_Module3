@@ -17,7 +17,7 @@
     </h2>
 </center>
 <div align="center">
-    <form action="/users" method="get"><input type="submit" value="Order by name">
+    <form action="/users" method="get"><input type="submit" id = "Order by name" name="Order by name" value="Order by name">
         <input type="hidden" name="action" value="nameorder">
     </form>
     <table border="1" cellpadding="5">
