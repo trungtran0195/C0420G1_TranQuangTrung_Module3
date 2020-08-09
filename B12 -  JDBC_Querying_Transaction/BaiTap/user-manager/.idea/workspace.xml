@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36407bd4-c5da-4b16-ac19-4d97d34b5e68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../B11 - JDBC/user-manager/src/controller/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../B11 - JDBC/user-manager/src/controller/UserServlet.java" afterDir="false" />
-    </list>
+    <list default="true" id="36407bd4-c5da-4b16-ac19-4d97d34b5e68" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,6 +134,7 @@
       <workItem from="1596593136568" duration="7550000" />
       <workItem from="1596610197258" duration="2764000" />
       <workItem from="1596680749109" duration="3076000" />
+      <workItem from="1596790186434" duration="16000" />
     </task>
     <servers />
   </component>

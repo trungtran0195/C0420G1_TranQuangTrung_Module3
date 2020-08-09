@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36407bd4-c5da-4b16-ac19-4d97d34b5e68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../../B11 - JDBC/user-manager/src/controller/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../B11 - JDBC/user-manager/src/controller/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../user-manager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../user-manager/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MySql_JDBC_Transaction_Practice/user-manager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../B11 - JDBC/user-manager" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.16015625" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -137,6 +137,7 @@
       <workItem from="1596610197258" duration="2764000" />
       <workItem from="1596680407109" duration="339000" />
       <workItem from="1596683930367" duration="2056000" />
+      <workItem from="1596790204387" duration="17000" />
     </task>
     <servers />
   </component>
@@ -156,10 +157,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596684720664" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1596685989032">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="463" y="126" key="FileChooserDialogImpl" timestamp="1596790219739">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596685989032" />
+    <state x="463" y="126" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1596790219739" />
     <state width="905" height="179" key="GridCell.Tab.0.bottom" timestamp="1596601057962">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
