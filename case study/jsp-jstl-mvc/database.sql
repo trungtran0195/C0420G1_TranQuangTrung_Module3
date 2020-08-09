@@ -48,9 +48,7 @@ DELIMITER //
 create procedure delete_note(in `noteId` int)
 begin
 SET FOREIGN_KEY_CHECKS=0;
-update note set note_id = false ,title = false , content = false, type_id = false where note_id = noteId ;
+update note set title = false , content = false, type_id = false where note_id = noteId ;
 SET FOREIGN_KEY_CHECKS=1;
 end //
 DELIMITER ;
-
-call delete_note();
