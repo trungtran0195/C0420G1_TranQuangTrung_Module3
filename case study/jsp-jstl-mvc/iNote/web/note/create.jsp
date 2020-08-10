@@ -16,9 +16,6 @@
         <span class="message">${requestScope["message"]}</span>
     </c:if>
 </p>
-<p>
-    <a href="/blog">Back to note list</a>
-</p>
 <form method="post">
     <fieldset>
         <legend>Note information</legend>
@@ -40,8 +37,8 @@
                 </select></td>
             </tr>
             <tr>
-                <td></td>
-                <td><input type="submit" value="Create note"></td>
+                <td><button><a href="/blog" style="color: black; text-decoration: none;">Cancel</a></button></td>
+                <td><input type="submit" value="Create"></td>
             </tr>
         </table>
     </fieldset>

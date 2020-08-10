@@ -11,6 +11,8 @@ public interface NoteBO {
     void save(String title,String content,int typeId);
     void update(Note note);
     void delete(int id);
+    void saveFile();
     public Note seleteNote(int id);
     List<Note> seleteNoteByTitle(String title);
+    List<Note> seleteNoteByType(int typeId);
 }

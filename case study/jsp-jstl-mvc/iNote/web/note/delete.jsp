@@ -5,9 +5,6 @@
 </head>
 <body>
 <h1>Note details</h1>
-<p>
-    <a href="/blog">Back to blog</a>
-</p>
 <form method="post">
     <h3>Are you sure?</h3>
 <table>
@@ -28,8 +25,8 @@
         <td>${requestScope["notes"].getContent()}</td>
     </tr>
     <tr>
-        <td><input type="submit" value="Delete note"></td>
-        <td><a href="/blog">Back to blog list</a></td>
+        <td><button><a href="/blog" style="color: black; text-decoration: none;">Cancel</a></button></td>
+        <td><input type="submit" value="Delete"></td>
     </tr>
 </table>
 </form>

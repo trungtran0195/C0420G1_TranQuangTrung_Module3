@@ -14,12 +14,12 @@
 <p>
     <a href="/blog?action=create">Create new blog</a>
     <a><form action="/blog" method="get">Search:
-        <select>
+        <select name="searchType" id="searchType">
             <c:forEach items='${requestScope["noteType"]}' var="type">
                 <option value="${type.getTypeId()}">${type.getType()}</option>
             </c:forEach>
         </select>
-        <input type="text" name="search" id="search"><input type="submit" value="Search blog">
+        <input type="text" name="searchTitle" id="searchTitle"><input type="submit" value="Search blog">
         <input type="hidden" name="action" value="searchBlog">
     </form></a>
 </p>

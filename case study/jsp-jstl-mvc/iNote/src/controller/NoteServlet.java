@@ -63,7 +63,7 @@ public class NoteServlet extends HttpServlet {
                 viewNote(request, response);
                 break;
             case "searchBlog":
-                searchNoteByTitle(request, response);
+                searchNote(request, response);
                 break;
             default:
                 listNotes(request, response);
@@ -212,10 +212,39 @@ public class NoteServlet extends HttpServlet {
         }
     }
 
-    private void searchNoteByTitle(HttpServletRequest request, HttpServletResponse response) {
+    private void searchNote(HttpServletRequest request, HttpServletResponse response) {
+        String searchTitle = request.getParameter("searchTitle");
+        String searchType = request.getParameter("searchType");
+        List<Note> listNotes = this.noteBO.seleteNoteByTitle(searchTitle);
+        List<Note> listNotesByType = null;
+        if (searchType != null) {
+            listNotesByType = this.noteBO.seleteNoteByType(Integer.parseInt(searchType));
+        }
+        RequestDispatcher dispatcher;
+        if(listNotes == null && listNotesByType == null){
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else if (listNotes != null && listNotesByType == null){
+            List<NoteType> noteTypeList = this.noteBO.findAllNoteType();
+            request.setAttribute("noteType", noteTypeList);
+            request.setAttribute("notes", listNotes);
+            dispatcher = request.getRequestDispatcher("note/list.jsp");
+        } else {
+            List<NoteType> noteTypeList = this.noteBO.findAllNoteType();
+            request.setAttribute("noteType", noteTypeList);
+            request.setAttribute("notes", listNotesByType);
+            dispatcher = request.getRequestDispatcher("note/list.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void listNotes(HttpServletRequest request, HttpServletResponse response) {
+        this.noteBO.saveFile();
         int page = 1;
         int recordsPerPage = 5;
         if(request.getParameter("page") != null)
@@ -223,11 +252,11 @@ public class NoteServlet extends HttpServlet {
 
         List<NoteType> noteTypeList = this.noteBO.findAllNoteType();
         List<Note> notes = this.noteBO.findAll((page-1)*recordsPerPage, recordsPerPage);
-        int noOfRecords = noteDAO.getNoOfRecords();
-        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+//        int noOfRecords = noteDAO.getNoOfRecords();
+//        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
         request.setAttribute("notes", notes);
         request.setAttribute("noteType", noteTypeList);
-        request.setAttribute("noOfPages", noOfPages);
+//        request.setAttribute("noOfPages", noOfPages);
         request.setAttribute("currentPage", page);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("note/list.jsp");

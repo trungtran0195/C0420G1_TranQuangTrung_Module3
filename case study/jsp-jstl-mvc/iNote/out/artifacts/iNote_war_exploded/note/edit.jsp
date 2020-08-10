@@ -16,9 +16,6 @@
         <span class="message">${requestScope["message"]}</span>
     </c:if>
 </p>
-<p>
-    <a href="/blog">Back to note list</a>
-</p>
 <form method="post">
     <input type="hidden" name="id" id="id" value="${requestScope["notes"].getId()}">
     <fieldset>
@@ -30,7 +27,7 @@
             </tr>
             <tr>
                 <td>Content: </td>
-                <td><input type="text" name="content" id="content" value="${requestScope["notes"].getContent()}"></td>
+                <td><textarea type="text" name="content" id="content">${requestScope["notes"].getContent()}</textarea></td>
             </tr>
             <tr>
                 <td>Type: </td>
@@ -42,8 +39,8 @@
                 </select></td>
             </tr>
             <tr>
-                <td></td>
-                <td><input type="submit" value="Edit note"></td>
+                <td><button><a href="/blog" style="color: black; text-decoration: none;">Cancel</a></button></td>
+                <td><input type="submit" value="Edit"></td>
             </tr>
         </table>
     </fieldset>

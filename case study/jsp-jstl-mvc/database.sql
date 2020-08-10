@@ -25,6 +25,7 @@ insert into note(title,content,type_id) value ('haunted house' ,  'a house where
 
 -- paging list procedure
 DELIMITER //
+drop procedure if exists paged_list;
 create procedure paged_list(in `offset` int , noOfRecords int)
 begin
 select note_id,title, content, note_type.type_id,`name` from note 
@@ -37,6 +38,7 @@ call paged_list(0,2)
 
 -- select note procedure
 DELIMITER //
+drop procedure if exists select_note;
 create procedure select_note(in `noteId` int)
 begin
 select note_id,title, content, note_type.type_id,`name` from note inner join note_type on note.type_id = note_type.type_id where note_id = noteId ;
@@ -45,10 +47,34 @@ DELIMITER ;
 
 -- delete note
 DELIMITER //
+drop procedure if exists delete_note;
 create procedure delete_note(in `noteId` int)
 begin
 SET FOREIGN_KEY_CHECKS=0;
 update note set title = false , content = false, type_id = false where note_id = noteId ;
 SET FOREIGN_KEY_CHECKS=1;
+end //
+DELIMITER ;
+
+-- search note by title
+DELIMITER //
+drop procedure if exists search_note_title;
+create procedure search_note_title(in _searchTitle varchar(100))
+begin
+SET @query = CONCAT(
+'select note_id,title, content, note_type.type_id,`name` from note 
+inner join note_type on note.type_id = note_type.type_id where title like "%',_searchTitle,'%"');
+PREPARE stmt FROM @query;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+end //
+DELIMITER ;
+
+-- select note by type procedure 
+DELIMITER //
+drop procedure if exists select_note_by_type;
+create procedure select_note_by_type(in `typeId` int)
+begin
+select note_id,title, content, note_type.type_id,`name` from note inner join note_type on note.type_id = note_type.type_id where note.type_id = typeId ;
 end //
 DELIMITER ;

@@ -2,19 +2,23 @@ package bo;
 
 import dao.NoteDAO;
 import dao.NoteDAOImpl;
+import dao.WriteAndReadFile;
+import dao.WriteAndReadFileImpl;
 import model.Note;
 import model.NoteType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoteBOImpl implements NoteBO {
 
     private NoteDAO noteDAO = new NoteDAOImpl();
+    private WriteAndReadFile writeAndReadFile = new WriteAndReadFileImpl();
 
 
     @Override
     public List<Note> findAll(int offset, int noOfRecords) {
-        return this.noteDAO.findAll(offset,noOfRecords);
+        return this.noteDAO.findAll();
     }
 
     @Override
@@ -38,6 +42,11 @@ public class NoteBOImpl implements NoteBO {
     }
 
     @Override
+    public void saveFile() {
+        this.writeAndReadFile.save(this.noteDAO.findAll());
+    }
+
+    @Override
     public Note seleteNote(int id) {
         return this.noteDAO.seleteNote(id);
     }
@@ -45,5 +54,10 @@ public class NoteBOImpl implements NoteBO {
     @Override
     public List<Note> seleteNoteByTitle(String title) {
         return this.noteDAO.seleteNoteByTitle(title);
+    }
+
+    @Override
+    public List<Note> seleteNoteByType(int typeId) {
+        return this.noteDAO.seleteNoteByType(typeId);
     }
 }
