@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "NoteServlet", urlPatterns = "/blog")
@@ -65,6 +66,9 @@ public class NoteServlet extends HttpServlet {
             case "searchBlog":
                 searchNote(request, response);
                 break;
+            case "deleteFile":
+                deleteFile(request,response);
+                break;
             default:
                 listNotes(request, response);
                 break;
@@ -94,6 +98,7 @@ public class NoteServlet extends HttpServlet {
 
         this.noteBO.save(title,content,Integer.parseInt(typeId));
         RequestDispatcher dispatcher = request.getRequestDispatcher("note/create.jsp");
+        this.noteBO.saveFile();
         request.setAttribute("message", "New note was created");
         try {
             dispatcher.forward(request, response);
@@ -243,8 +248,26 @@ public class NoteServlet extends HttpServlet {
         }
     }
 
+    private void deleteFile(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Note note = this.noteBO.seleteNote(id);
+        ArrayList<Note> noteList = this.noteBO.findAll(1,1);
+        RequestDispatcher dispatcher;
+        if(note == null){
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else {
+            this.noteBO.deleteFile(noteList,id);
+            try {
+                String message = "Note has been deleted from file";
+                request.getSession().setAttribute("message", message);
+                response.sendRedirect("/blog");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void listNotes(HttpServletRequest request, HttpServletResponse response) {
-        this.noteBO.saveFile();
         int page = 1;
         int recordsPerPage = 5;
         if(request.getParameter("page") != null)

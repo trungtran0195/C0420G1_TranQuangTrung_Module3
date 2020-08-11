@@ -30,6 +30,7 @@
         <td>Phân loại</td>
         <td></td>
         <td></td>
+        <td></td>
     </tr>
     <c:forEach items='${requestScope["notes"]}' var="note">
         <tr>
@@ -38,6 +39,7 @@
             <td>${note.getType()}</td>
             <td><a href="/blog?action=edit&id=${note.getId()}">edit</a></td>
             <td><a href="/blog?action=delete&id=${note.getId()}">delete</a></td>
+            <td><a href="/blog?action=deleteFile&id=${note.getId()}">deleteFromFile</a></td>
         </tr>
     </c:forEach>
 </table>

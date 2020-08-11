@@ -42,9 +42,8 @@ public class WriteAndReadFileImpl implements WriteAndReadFile{
                 buffer.append(TYPE).append(note.getType()).append(NEW_LINE_SEPARATOR);
                 buffer.append(BIG_SPACE).append(BRACKET_STOP).append(COMMA_DELIMITER);
                 System.out.println(note.getTitle());
-                fileWriter.append(buffer.toString());
             }
-
+            fileWriter.append(buffer.toString());
             fileWriter.append(FILE_FOOTER);
             fileWriter.flush();
             fileWriter.close();
@@ -54,7 +53,15 @@ public class WriteAndReadFileImpl implements WriteAndReadFile{
     }
 
     @Override
-    public void delete() {
+    public void delete(ArrayList<Note>noteList, int id) {
+        int i;
+        for (i = 0; i< noteList.size();i++){
+            if(noteList.get(i).getId() == id){
+                noteList.remove(i);
+                save(noteList);
+            }
+        }
+
     }
 
     public static void checkFileExists(String filePath) {

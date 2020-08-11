@@ -41,18 +41,17 @@ DELIMITER //
 drop procedure if exists select_note;
 create procedure select_note(in `noteId` int)
 begin
-select note_id,title, content, note_type.type_id,`name` from note inner join note_type on note.type_id = note_type.type_id where note_id = noteId ;
+select note_id,title, content, note_type.type_id,`name` from note inner join note_type on note.type_id = note_type.type_id where note_id = noteId and delete_note != 1;
 end //
 DELIMITER ;
 
 -- delete note
+ALTER TABLE note ADD delete_note int;
 DELIMITER //
 drop procedure if exists delete_note;
 create procedure delete_note(in `noteId` int)
 begin
-SET FOREIGN_KEY_CHECKS=0;
-update note set title = false , content = false, type_id = false where note_id = noteId ;
-SET FOREIGN_KEY_CHECKS=1;
+update note set delete_note = 1 where note_id = noteId ;
 end //
 DELIMITER ;
 
@@ -63,7 +62,7 @@ create procedure search_note_title(in _searchTitle varchar(100))
 begin
 SET @query = CONCAT(
 'select note_id,title, content, note_type.type_id,`name` from note 
-inner join note_type on note.type_id = note_type.type_id where title like "%',_searchTitle,'%"');
+inner join note_type on note.type_id = note_type.type_id where title like "%',_searchTitle,'%" and delete_note != 1');
 PREPARE stmt FROM @query;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
@@ -75,6 +74,6 @@ DELIMITER //
 drop procedure if exists select_note_by_type;
 create procedure select_note_by_type(in `typeId` int)
 begin
-select note_id,title, content, note_type.type_id,`name` from note inner join note_type on note.type_id = note_type.type_id where note.type_id = typeId ;
+select note_id,title, content, note_type.type_id,`name` from note inner join note_type on note.type_id = note_type.type_id where note.type_id = typeId and note.delete_note != 1;
 end //
 DELIMITER ;

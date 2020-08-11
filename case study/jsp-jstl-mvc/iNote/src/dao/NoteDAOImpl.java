@@ -14,9 +14,9 @@ public class NoteDAOImpl implements NoteDAO{
 //    private static final String SHOW_ALL_NOTE = "select note_id,title, content, note_type.type_id,`name` from note \n" +
 //            "inner join note_type on note.type_id = note_type.type_id order by note_id limit " + "?" + "," + "? ;";
     private static final String SHOW_ALL_NOTE = "select note_id,title, content, note_type.type_id,`name` from note \n" +
-        "inner join note_type on note.type_id = note_type.type_id order by note_id";
+        "inner join note_type on note.type_id = note_type.type_id where delete_note != 1 order by note_id";
     private static final String SELECT_ALL_NOTE_TYPE = "SELECT `type_id`,`name` FROM note_type order by `name`";
-    private static final String ADD_NOTE = "insert into note (title, content, type_id) value ( ? , ? , ? )";
+    private static final String ADD_NOTE = "insert into note (title, content, type_id, delete_note) value ( ? , ? , ? , 0)";
     private static final String UPDATE_NOTE = "update note set title = ?, content = ? , type_id = ? where note_id = ? ";
     private static final String DELETE_NOTE = "call delete_note(?);";
     private static final String SELECT_NOTE_BY_ID = "call select_note(?)";

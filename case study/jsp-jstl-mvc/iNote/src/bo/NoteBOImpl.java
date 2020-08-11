@@ -17,7 +17,7 @@ public class NoteBOImpl implements NoteBO {
 
 
     @Override
-    public List<Note> findAll(int offset, int noOfRecords) {
+    public ArrayList<Note> findAll(int offset, int noOfRecords) {
         return this.noteDAO.findAll();
     }
 
@@ -44,6 +44,11 @@ public class NoteBOImpl implements NoteBO {
     @Override
     public void saveFile() {
         this.writeAndReadFile.save(this.noteDAO.findAll());
+    }
+
+    @Override
+    public void deleteFile(ArrayList<Note> noteList, int id) {
+        this.writeAndReadFile.delete(noteList,id);
     }
 
     @Override

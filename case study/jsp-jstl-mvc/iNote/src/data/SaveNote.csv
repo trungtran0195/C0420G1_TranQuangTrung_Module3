@@ -1,0 +1,9 @@
+{
+   Note: [
+   {      id: 1,
+      title: learn sql,
+      content: today we learn about JDBC,
+      type: educate
+   },
+   ]
+}

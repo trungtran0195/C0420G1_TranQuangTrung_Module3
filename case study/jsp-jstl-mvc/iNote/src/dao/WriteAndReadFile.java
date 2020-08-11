@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface WriteAndReadFile {
     void save(ArrayList<Note>noteList);
-    void delete();
+    void delete(ArrayList<Note>noteList, int id);
 }
