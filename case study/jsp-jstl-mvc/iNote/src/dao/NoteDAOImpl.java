@@ -31,8 +31,8 @@ public class NoteDAOImpl implements NoteDAO{
     public ArrayList<Note> findAll() {
         ArrayList<Note> noteList = new ArrayList<>();
 
-        try {
-            PreparedStatement preparedStatement = this.baseDAO.getConnection().prepareStatement(SHOW_ALL_NOTE);
+            try {
+                PreparedStatement preparedStatement = this.baseDAO.getConnection().prepareStatement(SHOW_ALL_NOTE);
 //            preparedStatement.setInt(1,offset);
 //            preparedStatement.setInt(2,noOfRecords);
 
@@ -58,9 +58,9 @@ public class NoteDAOImpl implements NoteDAO{
 //            resultSet = preparedStatement.executeQuery();
 //            if(resultSet.next())
 //                this.noOfRecords = resultSet.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         return noteList;
     }
 

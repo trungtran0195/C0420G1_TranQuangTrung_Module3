@@ -5,10 +5,5 @@
       content: today we learn about JDBC,
       type: educate
    },
-   {      id: 2,
-      title: haunted house,
-      content: a house where happen a family murder before,
-      type: horror
-   },
    ]
 }

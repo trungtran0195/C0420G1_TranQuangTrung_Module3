@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "NoteServlet", urlPatterns = "/blog")
+@WebServlet(name = "NoteServlet", urlPatterns = "   ")
 public class NoteServlet extends HttpServlet {
 
     private NoteBO noteBO = new NoteBOImpl();
