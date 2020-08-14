@@ -22,9 +22,6 @@ public class FuramaServlet extends HttpServlet {
             action = "";
         }
         switch (action){
-            case "customer":
-                customerServlet.listCustomers(request,response);
-                break;
             default:
                 mainsite(request, response);
                 break;

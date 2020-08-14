@@ -22,11 +22,11 @@
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
         <div class="navbar-nav ml-auto">
-            <a href="/?action=home" class="nav-item nav-link active"><i class="fa fa-home"></i><span>Home</span></a>
-            <a href="/?action=customer" class="nav-item nav-link"><i class="fas fa-address-book"></i><span>Customer</span></a>
-            <a href="/?action=employee" class="nav-item nav-link"><i class="fa fa-users"></i><span>Employee</span></a>
-            <a href="/?action=contract" class="nav-item nav-link"><i class="fas fa-file"></i><span>Contract</span></a>
-            <a href="/?action=service" class="nav-item nav-link"><i class="fas fa-hotel"></i><span>Service</span></a>
+            <a href="" class="nav-item nav-link active"><i class="fa fa-home"></i><span>Home</span></a>
+            <a href="/customer" class="nav-item nav-link"><i class="fas fa-address-book"></i><span>Customer</span></a>
+            <a href="/employee" class="nav-item nav-link"><i class="fa fa-users"></i><span>Employee</span></a>
+            <a href="/contract" class="nav-item nav-link"><i class="fas fa-file"></i><span>Contract</span></a>
+            <a href="/service" class="nav-item nav-link"><i class="fas fa-hotel"></i><span>Service</span></a>
         </div>
     </div>
 </nav>

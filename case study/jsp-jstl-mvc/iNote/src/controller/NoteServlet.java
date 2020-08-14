@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "NoteServlet", urlPatterns = "   ")
+@WebServlet(name = "NoteServlet", urlPatterns = "")
 public class NoteServlet extends HttpServlet {
 
     private NoteBO noteBO = new NoteBOImpl();
@@ -145,7 +145,7 @@ public class NoteServlet extends HttpServlet {
         request.setAttribute("noteType", noteTypeList);
         int id = Integer.parseInt(request.getParameter("id"));
         Note note = this.noteBO.seleteNote(id);
-        RequestDispatcher dispatcher;
+            RequestDispatcher dispatcher;
         if(note == null){
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {

@@ -11,34 +11,45 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="list.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            // Activate tooltip
-            $('[data-toggle="tooltip"]').tooltip();
+    <script src="http://1892.yn.lt/blogger/JQuery/Pagging/js/jquery.twbsPagination.js" type="text/javascript"></script>
 
-            // Select/Deselect checkboxes
-            var checkbox = $('table tbody input[type="checkbox"]');
-            $("#selectAll").click(function(){
-                if(this.checked){
-                    checkbox.each(function(){
-                        this.checked = true;
-                    });
-                } else{
-                    checkbox.each(function(){
-                        this.checked = false;
-                    });
-                }
+    <script type="text/javascript">
+    $(function () {
+        var pageSize = 6; // Hiển thị 6 sản phẩm trên 1 trang
+        showPage = function (page) {
+            $(".contentPage").hide();
+            $(".contentPage").each(function (n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
             });
-            checkbox.click(function(){
-                if(!this.checked){
-                    $("#selectAll").prop("checked", false);
-                }
-            });
+        }
+        showPage(1);
+        ///** Cần truyền giá trị vào đây **///
+        var totalRows = 40; // Tổng số sản phẩm hiển thị
+        var btnPage = 5; // Số nút bấm hiển thị di chuyển trang
+        var iTotalPages = Math.ceil(totalRows / pageSize);
+        var obj = $('#pagination').twbsPagination({
+            totalPages: iTotalPages,
+            visiblePages: btnPage,
+            onPageClick: function (event, page) {
+                console.info(page);
+                showPage(page);
+            }
         });
-    </script>
+        console.info(obj.data());
+    });
+</script>
+    <style>
+        #pagination {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            -webkit-justify-content: center;
+        }
+    </style>
 </head>
 <body>
 <div class="container-xl">
@@ -47,12 +58,20 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Customer</b></h2>
+                        <h2><b><a href="/customer">Manage Customer</a></b></h2>
+                        <h5>
+                            <c:if test='${sessionScope["message"] != null}'>
+                            <span class="message">${sessionScope["message"]}</span>
+                            </c:if>
+                        </h5>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Customer</span></a>
                     </div>
+                    <div class="col-sm-6"><a><form action="/customer" method="get">Search:
+                        <input type="text" name="searchName" id="searchName"><input type="submit" value="Search name">
+                        <input type="hidden" name="action" value="searchCustomer">
+                    </form></a></div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -64,45 +83,36 @@
                     <th>ID Card</th>
                     <th>Phone</th>
                     <th>Email</th>
-<%--                    <th>Customer Type</th>--%>
+                    <th>Customer Type</th>
                     <th>Address</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items='${requestScope["customers"]}' var="customer">
-                <tr>
+                <c:forEach items='${customers}' var="customer">
+                <tr class="contentPage">
                     <td>${customer.getFullName()}</td>
                     <td>${customer.getBirthday()}</td>
                     <td>${customer.getGender()}</td>
                     <td>${customer.getIdCard()}</td>
                     <td>${customer.getPhone()}</td>
                     <td>${customer.getEmail()}</td>
-<%--                    <td><c:forEach items='${requestScope["customerTypes"]}' var="type">--%>
-<%--                        <c:set var="id" scope="request" value="${customer.getCustomerTypeId}"/>--%>
-<%--                        <c:if test = "${type.getCustomer_type = id}">${type.getCustomer_type}</c:if>--%>
-<%--                        </c:forEach>--%>
-<%--                    </td>--%>
+                    <c:forEach var="type" items="${customerTypes}">
+                        <c:if test="${customer.customerTypeId == type.customer_type_id}">
+                            <td><c:out value="${type.customer_type}"/></td>
+                        </c:if>
+                    </c:forEach>
                     <td>${customer.getAddress()}</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a href="/customer?action=edit&id=${customer.getCustomerId()}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="/customer?action=delete&id=${customer.getCustomerId()}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
                 </c:forEach>
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
+                <ul id="pagination"></ul>
             </div>
         </div>
     </div>
@@ -111,88 +121,48 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form action="/customer?action=create" method="post">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
+                    <h4 class="modal-title">Add Customer</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="name" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
+                        <label>Birthday</label>
+                        <input type="date" class="form-control" name="birthday" id="birthday" required>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
+                        <label>Id Card</label>
+                        <input type="text" class="form-control" name="idCard" id="idCard" required>
                     </div>
                     <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="phone" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" name="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Type</label>
+                        <select name="typeID" class="form-control" id="typeID">
+                            <c:forEach var="type" items="${customerTypes}">
+                                <option value="${type.customer_type_id}">${type.customer_type}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <textarea class="form-control" name = "address" id="address" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
                 </div>
             </form>
         </div>

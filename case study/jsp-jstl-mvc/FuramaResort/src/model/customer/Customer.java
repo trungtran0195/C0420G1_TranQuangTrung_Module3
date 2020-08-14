@@ -1,11 +1,11 @@
 package model.customer;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Customer {
     private int customerId;
     private String fullName;
-    private Date birthday;
+    private String birthday;
     private String gender;
     private String idCard;
     private String phone;
@@ -17,7 +17,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customerId, String fullName, Date birthday, String gender, String idCard, String phone, String email, int customerTypeId, String address) {
+    public Customer(int customerId, String fullName, String birthday, String gender, String idCard, String phone, String email, int customerTypeId, String address) {
         this.customerId = customerId;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -45,11 +45,11 @@ public class Customer {
         this.fullName = fullName;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
