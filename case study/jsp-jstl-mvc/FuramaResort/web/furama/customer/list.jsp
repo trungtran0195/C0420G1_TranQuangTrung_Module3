@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="http://1892.yn.lt/blogger/JQuery/Pagging/js/jquery.twbsPagination.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.js"></script>
 
     <script type="text/javascript">
     $(function () {
@@ -137,15 +137,15 @@
                     </div>
                     <div class="form-group">
                         <label>Id Card</label>
-                        <input type="text" class="form-control" name="idCard" id="idCard" required>
+                        <input type="text" class="form-control" name="idCard" id="idCard" required pattern = "^\d{9}" data-error="idCard is invalid">
                     </div>
                     <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" class="form-control" name="phone" id="phone" required>
+                        <input type="text" class="form-control" name="phone" id="phone" required pattern = "^(090|091|8490|8491)(\d{6})$" data-error="phone is invalid">
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control" name="email" id="email" required>
+                        <input type="text" class="form-control" name="email" id="email" required pattern = "^[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z]{2,3}" data-error="email address is invalid">
                     </div>
                     <div class="form-group">
                         <label>Customer Type</label>

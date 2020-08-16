@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="index.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -26,7 +26,7 @@
             <a href="/customer" class="nav-item nav-link"><i class="fas fa-address-book"></i><span>Customer</span></a>
             <a href="/employee" class="nav-item nav-link"><i class="fa fa-users"></i><span>Employee</span></a>
             <a href="/contract" class="nav-item nav-link"><i class="fas fa-file"></i><span>Contract</span></a>
-            <a href="/service" class="nav-item nav-link"><i class="fas fa-hotel"></i><span>Service</span></a>
+            <a href="/services" class="nav-item nav-link"><i class="fas fa-hotel"></i><span>Service</span></a>
         </div>
     </div>
 </nav>

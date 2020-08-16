@@ -125,7 +125,7 @@ public class CustomerServlet extends HttpServlet {
     //delete
     private void DeleteCustomer(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        this.furamaBO.delete(id);
+        this.furamaBO.deleteCustomer(id);
 
         request.getSession().setAttribute("message", "customer was deleted");
         try {
